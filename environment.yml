@@ -1,0 +1,13 @@
+name: presales-agent
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - streamlit>=1.58.0
+      - pandas>=3.0.0
+      - pydantic>=2.13.0
+      - python-docx>=1.2.0
+      - python-pptx>=1.0.2
+      - reportlab>=5.0.0

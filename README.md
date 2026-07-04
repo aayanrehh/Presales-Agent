@@ -22,6 +22,8 @@ Each stage must pass Pydantic validation before the next stage executes. The cur
 
 ## Quick Start
 
+Recommended path for most local installs:
+
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
@@ -29,11 +31,35 @@ python3 -m venv .venv
 .venv/bin/streamlit run app.py
 ```
 
+Conda path if Python package resolution is inconsistent on your machine:
+
+```bash
+conda env create -f environment.yml
+conda activate presales-agent
+python verify_requirements.py
+streamlit run app.py
+```
+
 ## Tests
 
 ```bash
 .venv/bin/python -m unittest discover -s tests
 ```
+
+With Conda:
+
+```bash
+python -m unittest discover -s tests
+```
+
+## Local Setup Fallbacks
+
+Use this order if someone cannot run the project locally:
+
+1. Use `requirements.txt` with Python 3.12+ in a virtual environment.
+2. Use `environment.yml` with Conda or Mamba if pip dependency resolution fails.
+3. Recreate the virtual environment from scratch if Streamlit imports an old global package.
+4. Add a Dockerfile only if the project needs fully identical environments across reviewers, demos, or cloud deployment.
 
 ## Production Notes
 
